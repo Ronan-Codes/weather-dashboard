@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <!-- BootStrap Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+        <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <!-- Iconic CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header class="bg-dark text-light text-center font-weight-bold p-1">
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <main class="row h-100">
+        <div class="col-4 row">
+            <div class="col-12 bg-light">
+                <h3 class="mt-2 mx-2">
+                    <label for="cityInput" class="">Search for a City: </label>
+                </h3>
+                <div class="input-group mb-4 mx-2 w-75">
+                    <input type="text" id="cityInput" class="form-control" aria-label="cityInput">
+                    <div class="input-group-append">
+                        <button id="cityBtn" class="btn btn-outline-secondary rounded bg-primary text-light" type="button"><span class="oi oi-magnifying-glass"></span></button>
+                    </div>
+                </div>
+                <ul class="list-group mx-2" id="citiesContainer">
+                    <li class="list-group-item" data-city="">Example City</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="row">
+                <div class="col-12 border rounded">
+                    <div id="mainCityContainer">
+                        <h2 id="date1Container">
+                            <!-- placeholder -->
+                            <span id="cityContainer">textContent[#cityContainer]</span>
+                            <span id="date1">textContent(8/15/2021)</span>
+                            <span id="icon1">textContent[#icon1]</span>
+                        </h2>
+                    </div>
+                    <p id="tempContainer1">Temperature: span[#tempContainer1]</p>
+                    <p id="humidityContainer1">Humidity: span[#humidityContainer1]</p>
+                    <p id="windContainer">Wind Speed: span[#windContainer1]</p>
+                    <p id="uvContainer">UV Index: span[#uvContainer - logo in span?]</p>
+                </div>
+
+                <div class="col-12 row justify-content-between">
+                    <div class="col-12">
+                        <h2>5-Day Forecast:</h2>
+                    </div>
+                    <div class="col-12">
+                        <div class="cards-container row justify-content-between">
+                            <!-- Forecast Cards -->
+                            <div class="card">
+                                <div class="card-body bg-primary text-light rounded p-4">
+                                    <p id="date2" class="card-title">8/16/2021</p>
+                                    <p id="icon2" class="card-text">[icon]</p>
+                                    <p id="tempContainer2" class="card-text">Temp: 77.77 F</p>
+                                    <p id="humidityContainer2" class="card-text">Humidity: 77%</p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body bg-primary text-light rounded p-4">
+                                    <p id="date3" class="card-title">8/16/2021</p>
+                                    <p id="icon3" class="card-text">[icon]</p>
+                                    <p id="tempContainer3" class="card-text">Temp: 77.77 F</p>
+                                    <p id="humidityContainer3" class="card-text">Humidity: 77%</p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body bg-primary text-light rounded p-4">
+                                    <p id="date4" class="card-title">8/16/2021</p>
+                                    <p id="icon4" class="card-text">[icon]</p>
+                                    <p id="tempContainer4" class="card-text">Temp: 77.77 F</p>
+                                    <p id="humidityContainer4" class="card-text">Humidity: 77%</p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body bg-primary text-light rounded p-4">
+                                    <p id="date5" class="card-title">8/16/2021</p>
+                                    <p id="icon5" class="card-text">[icon]</p>
+                                    <p id="tempContainer5" class="card-text">Temp: 77.77 F</p>
+                                    <p id="humidityContainer5" class="card-text">Humidity: 77%</p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body bg-primary text-light rounded p-4">
+                                    <p id="date6" class="card-title">8/16/2021</p>
+                                    <p id="icon6" class="card-text">[icon]</p>
+                                    <p id="tempContainer6" class="card-text">Temp: 77.77 F</p>
+                                    <p id="humidityContainer6" class="card-text">Humidity: 77%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

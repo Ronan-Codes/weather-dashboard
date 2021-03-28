@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card {
+    font-size: .8rem;
+}
+
+main {
+    max-height: 100%;
+}
+
+
+
+/* #cityBtn:focus {
+
+} */
