@@ -1,7 +1,11 @@
 // querySelectors Picked City Title - date1 - icon1
-var cityContainer = $("#cityContainer");
-var date1 = $("#date1");
-var icon1 = $("#icon1");
+var cityContainer = document.querySelector("#cityContainer")
+var currentDate = document.querySelector("#currentDate")
+var currentIcon = document.querySelector("#currentIcon")
+var currentTemp = document.querySelector("#currentTemp")
+var currentHumidity = document.querySelector("#currentHumidity")
+var currentWind = document.querySelector("#currentWind")
+var currentUvi = document.querySelector("#currentUvi");
 
 // querySelectors Picked City weather info
 var tempContainer1 = $("#tempContainer1");
@@ -56,19 +60,35 @@ var fetchWeather = function(pickedCity) {
         // check if request was successful
         if(response.ok) {
             response.json().then(function(data) {
+                // Clear City Name first then Display
+                if (pickedCity.length === 0) {
+                    cityContainer.textContent = "City not found."
+                }
+                cityContainer.textContent = "";
+                cityContainer.textContent = data.name;
 
-                var uvApiUrl = "http://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon +"&appid=86fcb44b6b11593f53514dda5d0a62ae"
+                var uvApiUrl = "http://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon +"&units=imperial&appid=86fcb44b6b11593f53514dda5d0a62ae"
                 fetch(uvApiUrl).then(function(response) {
                     if(response.ok) {
                         response.json().then(function(data) {
                             // console.log(currentDay)
+                            currentDate.textContent = "("+currentDay+")";
+
                             // console.log(data.current.weather[0].icon);
+                            currentIcon.setAttribute("src", "http://openweathermap.org/img/wn/"+ data.current.weather[0].icon +".png");
+
                             // console.log(data.current.temp)
+                            currentTemp.textContent = "Temperature: "+data.current.temp+"";
+
                             // console.log(data.current.humidity)
+                            currentHumidity.textContent = "Humidity: "+data.current.humidity+"";
+
                             // console.log(data.current.wind_speed)
+                            currentWind.textContent = "Wind Speed: "+data.current.wind_speed+"";
+
                             // console.log(data.current.uvi)
-                            // console.log(data)
-                            debugger;
+                            currentUvi.textContent = "UV Index: "+data.current.uvi+"";
+
                             for (var i = 1; i < 6; i++) {
                                 var forecastCard = $(".forecastCard[data-day='"+i+"']");
 
@@ -81,11 +101,13 @@ var fetchWeather = function(pickedCity) {
                                 forecastCard.append(forecastDate);
 
                                 // console.log(data.daily[i].weather[0].icon)
+                                var iconContainer = document.createElement("p");
+                                iconContainer.classList = "card-text icon-container";
                                 var forecastIcon = document.createElement("img");
-                                forecastIcon.classList = "card-text";
                                 forecastIcon.setAttribute("src", "http://openweathermap.org/img/wn/"+ data.daily[i].weather[0].icon +".png");
                                 forecastIcon.setAttribute("data-day", i);
-                                forecastCard.append(forecastIcon);
+                                iconContainer.append(forecastIcon);
+                                forecastCard.append(iconContainer);
 
                                 // console.log(data.daily[i].temp.day)
                                 var forecastTemp = document.createElement("p");
@@ -135,7 +157,7 @@ var displayWeather = function(data, pickedCity) {};
 
 // Click Events (citiesBtn & cityLi[data-city: #])
 
-fetchWeather("atlanta")
+fetchWeather("ocala")
 
 // Weather API ID (DELETE COMMENT PRIOR TO SUBMISSION)
 // 86fcb44b6b11593f53514dda5d0a62ae
