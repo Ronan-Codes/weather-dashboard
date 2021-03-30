@@ -14,6 +14,10 @@ var cityInputEl = document.querySelector("#cityInput")
 var displayToggleEl = document.querySelector("#displayToggle");
 // displayToggleEl.style.display = "none";
 
+// saveSearchedCities vars
+var searchedCitiesEl = document.querySelector("#searchedCities")
+var savedCities = [];
+
 // // querySelectors Picked City weather info
 // var tempContainer1 = $("#tempContainer1");
 // var humidityContainer1 = $("#humidityContainer1");
@@ -52,6 +56,17 @@ var displayToggleEl = document.querySelector("#displayToggle");
 
 
 var currentDay = moment().format("MM-DD-YYYY");
+
+// // Load Searched Cities
+// var loadSearchedCities = function() {
+//     savedCities = JSON.parse(localStorage.getItem());
+
+//     if (!savedCities) {
+//         savedCities = {
+//             cities: []
+//         };
+//     }
+// }
 
 
 // Fetch Functions Start -> leads to displayWeather
@@ -145,6 +160,8 @@ var fetchWeather = function(pickedCity) {
 }
 // Fetch Functions End
 
+
+
 // Form Submission -> leads to fetchWeather
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -155,11 +172,35 @@ var formSubmitHandler = function(event) {
 
     if (city) {
         fetchWeather(city);
+        saveCity(city);
+        displaySearchedCities(city);
         cityInputEl.value = "";
     } else {
         alert("Please enter a city.")
     }
 };
+
+// Save cities
+var saveCity = function(city) {
+    savedCities.push(city);
+    localStorage.setItem("savedCities", JSON.stringify(savedCities))
+}
+
+// Save searched cities
+var displaySearchedCities = function(city) {
+    // clear searchedCities Container
+    $("#searchedCities").empty();
+
+    for (var i = 0; i < savedCities.length ; i++) {
+        var capitalizedCity = savedCities[i].charAt(0).toUpperCase()+savedCities[i].slice(1);
+        // add <li>
+        var cityListItem = document.createElement("li");
+        cityListItem.classList = "list-group-item";
+        cityListItem.textContent = capitalizedCity;
+        cityListItem.setAttribute("data-savedCity-number", i)
+        $("#searchedCities").append(cityListItem);
+    }
+}
 
 // Clicked City from Saved List -> leads to fetchWeather
 var clickCity = function(pickedCity) {};
