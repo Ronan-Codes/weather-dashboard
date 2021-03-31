@@ -41,9 +41,9 @@ var fetchWeather = function(pickedCity) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
 
     if (location.protocol === 'http:') {
-        apiUrl = "http://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
+        url = "http://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
     } else {
-        apiUrl = "https://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
+        url = "https://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
     }
 
     fetch(apiUrl).then(function(response) {
