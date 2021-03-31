@@ -19,6 +19,11 @@ main {
     width: 2.5rem;
 }
 
+.font-bigger {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 
 
 /* #cityBtn:focus {
