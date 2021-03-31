@@ -61,7 +61,7 @@ var fetchWeather = function(pickedCity) {
                             currentDate.textContent = "("+currentDay+")";
 
                             // console.log(data.current.weather[0].icon);
-                            currentIcon.setAttribute("src", "http://openweathermap.org/img/wn/"+ data.current.weather[0].icon +".png");
+                            currentIcon.setAttribute("src", "https://openweathermap.org/img/wn/"+ data.current.weather[0].icon +".png");
 
                             // console.log(data.current.temp)
                             currentTemp.textContent = "Temperature: "+data.current.temp+"";
@@ -91,7 +91,7 @@ var fetchWeather = function(pickedCity) {
                                 var iconContainer = document.createElement("p");
                                 iconContainer.classList = "card-text icon-container";
                                 var forecastIcon = document.createElement("img");
-                                forecastIcon.setAttribute("src", "http://openweathermap.org/img/wn/"+ data.daily[i].weather[0].icon +".png");
+                                forecastIcon.setAttribute("src", "https://openweathermap.org/img/wn/"+ data.daily[i].weather[0].icon +".png");
                                 forecastIcon.setAttribute("data-day", i);
                                 iconContainer.append(forecastIcon);
                                 forecastCard.append(iconContainer);
