@@ -38,13 +38,7 @@ var loadSearchedCities = function() {
 // Fetch Functions Start -> leads to displayWeather
 var fetchWeather = function(pickedCity) {
     // API URL for Picked City
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
-
-    if (location.protocol === 'http:') {
-        url = "http://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
-    } else {
-        url = "https://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
-    }
+    let apiUrl = "https://api.openweathermap.org/data/2.5/weather/?q=" + pickedCity + "&appid=86fcb44b6b11593f53514dda5d0a62ae";
 
     fetch(apiUrl).then(function(response) {
         // check if request was successful
@@ -57,7 +51,7 @@ var fetchWeather = function(pickedCity) {
                 cityContainer.textContent = "";
                 cityContainer.textContent = data.name;
 
-                var uvApiUrl = "http://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon +"&units=imperial&appid=86fcb44b6b11593f53514dda5d0a62ae"
+                let uvApiUrl = "http://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon +"&units=imperial&appid=86fcb44b6b11593f53514dda5d0a62ae"
                 fetch(uvApiUrl).then(function(response) {
                     if(response.ok) {
                         response.json().then(function(data) {
