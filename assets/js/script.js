@@ -58,15 +58,18 @@ var savedCities = [];
 var currentDay = moment().format("MM-DD-YYYY");
 
 // // Load Searched Cities
-// var loadSearchedCities = function() {
-//     savedCities = JSON.parse(localStorage.getItem());
+var loadSearchedCities = function() {
+    savedCities = JSON.parse(localStorage.getItem("savedCities"));
 
-//     if (!savedCities) {
-//         savedCities = {
-//             cities: []
-//         };
-//     }
-// }
+    if (!savedCities) {
+        savedCities = [];
+    }
+
+    for (var i = 0; i<savedCities.length; i++) {
+        displaySearchedCities(savedCities[i]);
+        fetchWeather(savedCities[savedCities.length - 1]);
+    }
+}
 
 
 // Fetch Functions Start -> leads to displayWeather
@@ -205,6 +208,8 @@ var displaySearchedCities = function(city) {
 // Clicked City from Saved List -> leads to fetchWeather
 var clickCity = function(pickedCity) {};
 
+// Load Cities from Local Storage
+loadSearchedCities();
 // displayWeather Function
 var displayWeather = function(data, pickedCity) {};
 
